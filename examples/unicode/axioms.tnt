@@ -1,0 +1,5 @@
+∀a:~Sa=0		axiom 1
+∀a:(a+0)=a		axiom 2
+∀a:∀b:(a+Sb)=S(a+b)	axiom 3
+∀a:(a⋅0)=0		axiom 4
+∀a:∀b:(a⋅Sb)=((a⋅b)+a)	axiom 5

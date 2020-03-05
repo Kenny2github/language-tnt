@@ -1,0 +1,4 @@
+'.source.tnt':
+  'Fantasy':
+    'prefix': 'fantasy'
+    'body': '01 [\t\t\tpush\n02\t$1\t\tpremise\n03 ]\t\t\tpop\n'

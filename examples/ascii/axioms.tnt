@@ -1,0 +1,5 @@
+Aa:~Sa=0		axiom 1
+Aa:(a+0)=a		axiom 2
+Aa:Ab:(a+Sb)=S(a+b)	axiom 3
+Aa:(a*0)=0		axiom 4
+Aa:Ab:(a*Sb)=((a*b)+a)	axiom 5

@@ -1,0 +1,287 @@
+'scopeName': 'source.tnt'
+'name': 'Typographic Number Theory'
+'fileTypes': [
+  'tnt'
+]
+'patterns': [
+  {
+    'include': '#statement'
+  }
+  {
+    'include': '#comment'
+  }
+]
+'repository':
+  'operator':
+    'patterns': [
+      {
+        'match': '[+.⋅*]'
+        'name': 'keyword.operator.arithmetic.tnt'
+      }
+    ]
+  'implies':
+    'patterns': [
+      {
+        'match': '[⊃→\]]'
+        'name': 'keyword.operator.logic.implies.tnt'
+      }
+    ]
+  'not':
+    'patterns': [
+      {
+        'match': '[~!]'
+        'name': 'keyword.operator.logic.not.tnt'
+      }
+    ]
+  'and':
+    'patterns': [
+      {
+        'match': '[&∧^]'
+        'name': 'keyword.operator.logic.and.tnt'
+      }
+    ]
+  'or':
+    'patterns': [
+      {
+        'match': '[|∨Vv]'
+        'name': 'keyword.operator.logic.or.tnt'
+      }
+    ]
+  'numeral':
+    'patterns': [
+      {
+        'match': '0'
+        'name': 'constant.numeric.numeral.tnt'
+      }
+    ]
+  'number':
+    'patterns': [
+      {
+        'match': '[0-9]+'
+        'name': 'constant.numeric.number.tnt'
+      }
+    ]
+  'variable':
+    'patterns': [
+      {
+        'match': "([abcde])(['′]*)"
+        'name': 'variable.other.variable.tnt'
+        'captures':
+          '1':
+            'variable.other.variable.name.tnt'
+          '2':
+            'variable.other.variable.prime.tnt'
+      }
+    ]
+  'quantifier':
+    'patterns': [
+      {
+        'match': '([AE∀∃])([^:]+)(:)'
+        'name': 'keyword.other.quantifier.tnt'
+        'captures':
+          '1':
+            'name': 'keyword.other.quantifier.type.tnt'
+          '2':
+            'patterns': [
+              {
+                'include': '#variable'
+              }
+            ]
+          '3':
+            'name': 'keyword.other.quantifier.end.tnt'
+      }
+    ]
+  'term':
+    'patterns': [
+      {
+        'match': '(S+)(.+?)'
+        'name': 'meta.expression.term.tnt'
+        'captures':
+          '1':
+            'name': 'constant.numeric.numeral.successor.tnt'
+          '2':
+            'patterns': [
+              {
+                'include': '#term'
+              }
+            ]
+      }
+      {
+        'match': '(\\()(.+?)([+.⋅*])(.+?)(\\))'
+        'name': 'meta.expression.term.tnt'
+        'captures':
+          '1':
+            'name': 'punctuation.term.parenthesis.open.tnt'
+          '2':
+            'patterns': [
+              {
+                'include': '#term'
+              }
+            ]
+          '3':
+            'patterns': [
+              {
+                'include': '#operator'
+              }
+            ]
+          '4':
+            'patterns': [
+              {
+                'include': '#term'
+              }
+            ]
+          '5':
+            'name': 'punctuation.term.parenthesis.open.tnt'
+      }
+      {
+        'include': '#numeral'
+      }
+      {
+        'include': '#variable'
+      }
+    ]
+  'rule':
+    'patterns': [
+      {
+        'match': '''(?xi)
+                    joining | separation | double-tilde | fantasy\\ rule
+                    | carry[- ]over(?:\\ of)?(?:\\ line)?\\ ([0-9]+) | detachment
+                    | contrapositive | De\\ Morgan | switcheroo
+                    | specification | generalization | interchange
+                    | existence | symmetry | transitivity
+                    | add\\ S | drop\\ S | induction
+                    | axiom\\ ([1-5]) | premise | push | pop
+        '''
+        'name': 'keyword.control.rule.tnt'
+        'captures':
+          '1':
+            'patterns': [
+              {
+                'include': '#number'
+              }
+            ]
+          '2':
+            'patterns': [
+              {
+                'include': '#number'
+              }
+            ]
+      }
+    ]
+  'formula':
+    'patterns': [
+      {
+        'match': '((?:[~!]*(?:.+?:)*)*)(<)(.+)([⊃→\\]&∧^|∨Vv])(.+)(>)'
+        'name': 'meta.formula.tnt'
+        'captures':
+          '1':
+            'patterns': [
+              {
+                'include': '#not'
+              }
+              {
+                'include': '#quantifier'
+              }
+            ]
+          '2':
+            'name': 'punctuation.formula.start.tnt'
+          '3':
+            'patterns': [
+              {
+                'include': '#formula'
+              }
+            ]
+          '4':
+            'patterns': [
+              {
+                'include': '#and'
+              }
+              {
+                'include': '#or'
+              }
+              {
+                'include': '#implies'
+              }
+            ]
+          '5':
+            'patterns': [
+              {
+                'include': '#formula'
+              }
+            ]
+          '5':
+            'name': 'punctuation.formula.end.tnt'
+      }
+      {
+        'match': '((?:[~!]*(?:.+?:)*)*)([^=]+)(=)([^\\s⊃→\\]&∧^|∨Vv]+)'
+        'name': 'meta.formula.tnt'
+        'captures':
+          '1':
+            'patterns': [
+              {
+                'include': '#not'
+              }
+              {
+                'include': '#quantifier'
+              }
+            ]
+          '2':
+            'patterns': [
+              {
+                'include': '#term'
+              }
+            ]
+          '3':
+            'name': 'keyword.operator.equality.tnt'
+          '4':
+            'patterns': [
+              {
+                'include': '#term'
+              }
+            ]
+      }
+    ]
+  'statement':
+    'patterns': [
+      {
+        'match': '^\\s*(?:([0-9]+)\\s+)?(?:([^0-9\\s]\\S+)|(\\[)|(\\]))\\s+([a-zA-Z 0-9-]+)(\\s+\\(lines? [0-9]+(?:(?:, ?| and )[0-9]+)*\\))?$'
+        'name': 'meta.statement.tnt'
+        'captures':
+          '1':
+            'name': 'constant.numeric.number.line.tnt'
+            'patterns': [
+              {
+                'include': '#number'
+              }
+            ]
+          '2':
+            'patterns': [
+              {
+                'include': '#formula'
+              }
+            ]
+          '3':
+            'name': 'keyword.control.fantasy.start.tnt'
+          '4':
+            'name': 'keyword.control.fantasy.end.tnt'
+          '5':
+            'patterns': [
+              {
+                'include': '#rule'
+              }
+            ]
+          '6':
+            'patterns': [
+              {
+                'include': '#number'
+              }
+            ]
+      }
+    ]
+  'comment':
+    'patterns': [
+      {
+        'match': '^\\s*\\[[^\\]]+\\]$'
+        'name': 'comment.block.tnt'
+      }
+    ]

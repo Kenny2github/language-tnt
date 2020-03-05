@@ -1,0 +1,9 @@
+'.source.tnt':
+  'editor':
+    'autoIndentOnPaste': false
+    'softTabs': false
+    'tabLength': 8
+    'foldStartPattern': '^\\s*(?:([0-9]+)\\s+)?\\['
+    'foldEndPattern': '^\\s*(?:([0-9]+)\\s+)?\\]'
+    'increaseIndentPattern': '^\\s*(?:([0-9]+)\\s+)?\\['
+    'decreaseIndentPattern': '^\\s*(?:([0-9]+)\\s+)?\\]'
