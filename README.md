@@ -6,48 +6,48 @@ Typographic Number Theory support in Atom.
 ## Summary of TNT
 ### Rules of Well-Formedness
 **Numerals**
-> 0 is a numeral.
-> A numeral preceded by S is also a numeral.
+> 0 is a numeral.<br/>
+> A numeral preceded by S is also a numeral.<br/>
 > *Examples*: `0` `S0` `SS0` `SSS0` `SSSS0` `SSSSS0`
 
 **Variables**
-> `a` is a variable. If we're not being austere, so are `b`, `c`, `d`, and `e`.
-> A variable followed by a prime is also a variable.
-> *Examples*: `a` `b′` `c′′` `d′′′` `e′′′′`
+> `a` is a variable. If we're not being austere, so are `b`, `c`, `d`, and `e`.<br/>
+> A variable followed by a prime is also a variable.<br/>
+> *Examples*: `a` `b′` `c′′` `d′′′` `e′′′′`<br/>
 > *Other symbols permitted instead of `′`*: `'`
 
 **Terms**
-> All numerals and variables are terms.
-> A term preceded by `S` is also a term.
-> If `s` and `t` are terms, then so are `(s+t)` and `(s⋅t)`.
-> *Examples*: `0` `b` `(S0⋅(SS0+c))` `S(Sa⋅(Sb⋅Sc))`
+> All numerals and variables are terms.<br/>
+> A term preceded by `S` is also a term.<br/>
+> If `s` and `t` are terms, then so are `(s+t)` and `(s⋅t)`.<br/>
+> *Examples*: `0` `b` `(S0⋅(SS0+c))` `S(Sa⋅(Sb⋅Sc))`<br/>
 > *Other symbols permitted instead of `⋅`*: `*`, `.`
 
 The above rules tell how to make *parts* of well-formed formulas; the remaining rules tell how to make *complete* well-formed formulas.
 
 **Atoms**
-> If `s` and `t` are terms, then `s=t` is an atom.
-> *Examples*: `S0=0` `(SS0+SS0)=SSSS0` `S(b+c)=((c⋅d)⋅e)`
+> If `s` and `t` are terms, then `s=t` is an atom.<br/>
+> *Examples*: `S0=0` `(SS0+SS0)=SSSS0` `S(b+c)=((c⋅d)⋅e)`<br/>
 > If an atom contains a variable `u`, then `u` is *free* in it. Thus there are four free variables in the last example.
 
 **Negations**
-> A well-formed formula preceded by a tilde is well-formed.
-> *Examples*: `~S0=0` `~∃b:(b+b)=S0` `~<0=0⊃S0=0>` `~b=S0`
+> A well-formed formula preceded by a tilde is well-formed.<br/>
+> *Examples*: `~S0=0` `~∃b:(b+b)=S0` `~<0=0⊃S0=0>` `~b=S0`<br/>
 > *Other symbols permitted instead of `~`*: `!`
 
 **Compounds**
-> If `x` and `y` are well-formed formulas, and provided that no variable which is free in one is quantified in the other, then the following are all well-formed formulas:
-> `<x∧y>`, `<x∨y>`, `<x⊃y>`
-> *Examples*: `<0=0∧~0=0>` `<b=b∨~∃c:c=b>` `<S0=0⊃∀c:~∃b:(b+b)=c>`
-> *Other symbols permitted instead of `∧`*: `&`, `^`
-> *Other symbols permitted instead of `∨`*: `|`, `V`, `v`
+> If `x` and `y` are well-formed formulas, and provided that no variable which is free in one is quantified in the other, then the following are all well-formed formulas:<br/>
+> `<x∧y>`, `<x∨y>`, `<x⊃y>`<br/>
+> *Examples*: `<0=0∧~0=0>` `<b=b∨~∃c:c=b>` `<S0=0⊃∀c:~∃b:(b+b)=c>`<br/>
+> *Other symbols permitted instead of `∧`*: `&`, `^`<br/>
+> *Other symbols permitted instead of `∨`*: `|`, `V`, `v`<br/>
 > *Other symbols permitted instead of `⊃`*: `→` (Alt+26 on Windows), `]` (less obvious as "implies")
 
 **Quantifications**
-> If `u` is a variable, and `x` is a well-formed formula in which `u` is free, then the following strings are well-formed formulas:
-> `∃u:x` and `∀u:x`
-> *Examples*: `∀b:<b=b∨~∃c:c=b>` `∀c:~∃b:(b+b)=c` `~∃c:Sc=d`
-> *Other symbols permitted instead of `∀`*: `A`
+> If `u` is a variable, and `x` is a well-formed formula in which `u` is free, then the following strings are well-formed formulas:<br/>
+> `∃u:x` and `∀u:x`<br/>
+> *Examples*: `∀b:<b=b∨~∃c:c=b>` `∀c:~∃b:(b+b)=c` `~∃c:Sc=d`<br/>
+> *Other symbols permitted instead of `∀`*: `A`<br/>
 > *Other symbols permitted instead of `∃`*: `E`
 
 ### Rules of Propositional Calculus
@@ -80,11 +80,11 @@ The above rules tell how to make *parts* of well-formed formulas; the remaining 
 
 ### Rules of TNT
 **Rule of Specification**: `specification`
-> Suppose `u` is a variable which occurs inside the string `x`. If the string `∀u:x` is a theorem, then so is `x`, and so are any strings made from `x` by replacing `u`, wherever it occurs, by one and the same term.
+> Suppose `u` is a variable which occurs inside the string `x`. If the string `∀u:x` is a theorem, then so is `x`, and so are any strings made from `x` by replacing `u`, wherever it occurs, by one and the same term.<br/>
 > (*Restriction*: The term which replaces `u` must not contain any variable that is quantified in `x`.)
 
 **Rule of Generalization**: `generalization`
-> Suppose `x` is a theorem in which `u`, a variable, occurs free. Then `∀u:x` is a theorem.
+> Suppose `x` is a theorem in which `u`, a variable, occurs free. Then `∀u:x` is a theorem.<br/>
 > (*Restriction*: No generalization is allowed in a fantasy on any variable which appeared free in the fantasy's premise.)
 
 **Rule of Interchange**: `interchange`
@@ -106,8 +106,8 @@ The above rules tell how to make *parts* of well-formed formulas; the remaining 
 > If `Sr=St` is theorem, then `r=t` is a theorem.
 
 **Rule of Induction**: `induction`
-> Let `X{u}` represent a well-formed formula in which the variable `u` is free, and `X{x/u}` represent the same string, with each appearance of `u` replaced by `x`.
+> Let `X{u}` represent a well-formed formula in which the variable `u` is free, and `X{x/u}` represent the same string, with each appearance of `u` replaced by `x`.<br/>
 > If both `∀u:<X{u}⊃X{Su/u}>` and `X{0/u}` are theorems, then `∀u:X{u}` is also a theorem.
 
 ### Examples
-Check the [examples folder](tree/master/examples) - `ascii` contains examples using only ASCII-compatible symbols, `unicode` contains the same examples using the proper (intended) symbols.
+Check the [examples folder](https://github.com/Kenny2github/language-tnt/tree/master/examples) - `ascii` contains examples using only ASCII-compatible symbols, `unicode` contains the same examples using the proper (intended) symbols.
