@@ -34,7 +34,7 @@
 17 <Ad:(d+Sc)=(Sd+c)]Ad:(d+SSc)=(Sd+Sc)>	fantasy rule
 18 Ac:<Ad:(d+Sc)=(Sd+c)]Ad:(d+SSc)=(Sd+Sc)>	generalization
 19 (d+S0)=S(d+0)	specification (line 02)
-20 Aa:(a+0)=a		axiom 1
+20 Aa:(a+0)=a		axiom 2
 21 (d+0)=d		specification
 22 S(d+0)=Sd		add S
 23 (d+S0)=Sd		transitivity (lines 19,22)
