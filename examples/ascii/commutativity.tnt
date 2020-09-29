@@ -70,8 +70,7 @@
    [If d commutes with every c, then Sd does too.]
 
 50 (c+0)=c		specification (line 20)
-51 Aa:(0+a)=a		carry over 116
-52 (0+c)=c		specification
+52 (0+c)=c		specification (line 116)
 53 c=(0+c)		symmetry
 54 (c+0)=(0+c)		transitivity (lines 50,53)
 55 Ac:(c+0)=(0+c)	generalization
